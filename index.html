@@ -79,7 +79,14 @@
             document.body.style.background="#f00"
         }
         function play(){
-            
+            moveBar();
+        }
+        function moveBar(){
+
+        }
+        document.onkeydown=function(e){
+            e=e||window.event;
+            console.log(e.keyCode);
         }
         start();
     }();
