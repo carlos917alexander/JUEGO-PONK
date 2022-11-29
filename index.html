@@ -82,11 +82,43 @@
             moveBar();
         }
         function moveBar(){
-
+            if(player1.keyPress){
+                if(player1.keyCode==81 && bar1.offsetTop >=0){
+                    bar1.style.top=(bar1.offsetTop-movementBar)+"px";
+                }
+                if(player1.keyCode==65 && (bar1.offsetTop+bar1.clientHeight<=height)){
+                    bar1.style.top=(bar1.offsetTop+movementBar)+"px";
+                }
+            }
+            if(player2.keyPress){
+                if(player2.keyCode==79 && bar2.offsetTop >=0){
+                    bar2.style.top=(bar2.offsetTop-movementBar)+"px";
+                }
+                if(player2.keyCode==76 && (bar2.offsetTop+bar1.clientHeight<=height)){
+                    bar2.style.top=(bar2.offsetTop+movementBar)+"px";
+                }
+            }
         }
         document.onkeydown=function(e){
             e=e||window.event;
-            console.log(e.keyCode);
+            switch(e.keyCode){
+                case 81://Q
+                case 65://A
+                player1.keyCode=e.keyCode;
+                player1.keyPress=true;
+                case 79://O
+                case 76://L
+                player2.keyCode=e.keyCode;
+                player2.keyPress=true;
+                break;
+            }
+        }
+        document.onkeyup=function(e){
+            if(e.keyCode==81||e.keyCode==65)
+            player1.keyPress=false;
+            if(e.keyCode==79||e.keyCode==76)
+            player2.keyPress=false;
+            
         }
         start();
     }();
