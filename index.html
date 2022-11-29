@@ -5,14 +5,83 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        
+        body,html{
+            height: 100%;
+            background: #000;
+        }
+        #ball{
+            width: 20px;
+            height: 20px;
+            background: #000;
+            position: absolute;
+            left: 10px;
+            top: 0px;
+            border: 2px solid #fff;
+            border-radius: 10px;
+        }
+        .bar{
+            width: 20px;
+            height: 100px;
+            background: #000;
+            border: 2px solid #fff;
+        }
+        #bar1{
+            top: 20px;
+            float: left;
+            position: absolute;
+        }
+        #bar2{
+            top: 20px;
+            right: 0px;
+            position: absolute;
+        }
+        #line{
+            width: 50%;
+            border-right: #fff dashed 5px;
+            height: 100%;
+        }
     </style>
     <title>PONK</title>
 </head>
 <body>
     <div id="ball"></div>
-    <div id="bar1"></div>
-    <div id="bar2"></div>
+    <div id="bar1" class="bar"></div>
+    <div id="bar2" class="bar"></div>
     <div id="line"></div>
 </body>
+<script>
+    var game=function(){
+        let time=30;
+        let movement=20;
+        let movementBar=20;
+        let width=document.documentElement.clientWidth-movement;
+        let height=document.documentElement.clientHeight-movement;
+        let controlGame;
+        let player1;
+        let player2;
+        function start(){
+            init();
+            controlGame=setInterval(play,time);
+        }
+        function init(){
+            ball.style.left=0;
+            ball.state=1;
+            ball.direction=1;//derecha 1 izquierda 2
+            player1=new Object();
+            player2=new Object();
+            player1.keyPress=false;
+            player1.keyCode=null;
+            player2.keyPress=false;
+            player2.keyCode=null;
+        }
+        function stop(){
+            clearInterval(controlGame);
+            document.body.style.background="#f00"
+        }
+        function play(){
+            
+        }
+        start();
+    }();
+</script>
 </html>
